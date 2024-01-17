@@ -8,7 +8,8 @@
 #tqdm
 #pymetis
 # """Setup  pip  install for cuda11.1 or cuda 11.2."""
-pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
+#pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
+pip3 install torch torchvision torchaudio
 pip install torch-scatter
 pip install torch-sparse
 pip install torch-geometric

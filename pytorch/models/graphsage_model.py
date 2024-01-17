@@ -109,7 +109,7 @@ class SAGEConv(nn.Module):
 			if graph.is_block:
 				feat_dst = feat_src[:graph.number_of_dst_nodes()]
 		
-		msg_fn = fn.copy_src('h', 'm')
+		msg_fn = fn.copy_u('h', 'm')
 		h_self = feat_dst
 		if self._aggre_type == 'mean':
 			graph.srcdata['h'] =  feat_src
