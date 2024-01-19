@@ -519,6 +519,7 @@ def load_reddit():
 
 def load_ogb(name, args):
 	home_dir = os.getenv("HOME")
+	print('home_dir',home_dir)
 	data = DglNodePropPredDataset(name=name, root=os.path.join(home_dir, "graph_partition_multi_layers/benchmark_full_graph", "dataset"))
 	
 	# data = DglNodePropPredDataset(name=name)

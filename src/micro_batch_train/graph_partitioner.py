@@ -117,7 +117,7 @@ class Graph_Partitioner:  # ----------------------*** split the output layer blo
 	def remove_non_output_nodes(self):
 		import copy
 		local_src=copy.deepcopy(self.local_src_nids)
-		mask_array = np.full(len(local_src),True, dtype=np.bool)
+		mask_array = np.full(len(local_src),True, dtype=np.bool_)
 		mask_array[self.local_output_nids] = False
 		from itertools import compress
 		to_remove=list(compress(local_src, mask_array)) # time complexity O(n)
@@ -146,11 +146,13 @@ class Graph_Partitioner:  # ----------------------*** split the output layer blo
 			# get_memory('---------================-----------------=============---------REG start \n')
 			A = g.adjacency_matrix()
 			# get_memory('---------================-----------------=============---------REG A \n')
-			AT= torch.transpose(A, 0, 1)
+			# AT= torch.transpose(A, 0, 1)
+			AT = A.transpose()
 			# get_memory('---------================-----------------=============---------REG AT \n')
-			m_at = AT._indices().tolist()
+			# m_at = AT._indices().tolist()
+			m_at = AT.indices().tolist()
 			# get_memory('---------================-----------------=============---------REG indices AT \n')
-			m_a  = A._indices().tolist()
+			m_a  = A.indices().tolist()
 			length = len(m_a[0])
 			length2 = len(m_a[1])
 			# get_memory('---------================-----------------=============---------REG indices A \n')

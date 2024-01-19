@@ -1,4 +1,5 @@
 import sys
+
 sys.path.insert(0,'../utils/')
 sys.path.insert(0,'../models/')
 import dgl
@@ -21,9 +22,8 @@ import tqdm
 import random
 from graphsage_model import GraphSAGE
 import dgl.function as fn
-from load_graph import load_reddit, inductive_split, load_ogb, load_cora, load_karate, prepare_data, load_pubmed
+from load_graph import load_reddit, inductive_split, load_ogb, load_cora, load_karate, prepare_data, load_pubmed, load_ogbn_mag, load_ogbn_dataset
 
-from load_graph import load_ogbn_dataset
 from memory_usage import see_memory_usage, nvidia_smi_usage
 import tracemalloc
 from cpu_mem_usage import get_memory
