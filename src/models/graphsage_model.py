@@ -229,12 +229,11 @@ class GraphSAGE(nn.Module):
 		# Therefore, we compute the representation of all nodes layer by layer.  The nodes
 		# on each layer are of course splitted in batches.
 		# TODO: can we standardize this?
-		device = f'cuda:{args.device}' if torch.cuda.is_available() else 'cpu'
 		for l, layer in enumerate(self.layers):
 			y = torch.zeros(g.num_nodes(), self.n_hidden if l!=len(self.layers) - 1 else self.n_classes)
 
 			sampler = dgl.dataloading.MultiLayerFullNeighborSampler(1)
-			dataloader = dgl.dataloading.NodeDataLoader(
+			dataloader = dgl.dataloading.DataLoader(
 				g,
 				torch.arange(g.num_nodes(),dtype=torch.long).to(g.device),
 				sampler,
@@ -249,6 +248,8 @@ class GraphSAGE(nn.Module):
 			for input_nodes, output_nodes, blocks in tqdm.tqdm(dataloader):
 				block = blocks[0]
 				block = block.int().to(device)
+				input_nodes = input_nodes.to(device)
+				x = x.to(device)
 				h = x[input_nodes].to(device)
 				h = layer(block, h)
 				# y[output_nodes] = h

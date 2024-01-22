@@ -22,14 +22,14 @@ re_partition_method=REG
 re_partition_method=random
 # pMethodList=( random range) 
 
-num_batch=(3)
+num_batch=(9)
 num_re_partition=(0)
 
-layersList=(4)
+layersList=(1 2 3 4)
 fan_out_list=(10,25,30,40)
 
-hiddenList=(256 )
-AggreList=(mean )
+hiddenList=(256)
+AggreList=(mean)
 
 mkdir ./log1
 mkdir ./log1/micro_batch_train
@@ -74,7 +74,7 @@ do
 							--fan-out $fan_out \
 							--log-indent $logIndent \
 							--load-full-batch True \
-							> ./log/micro_batch_train/layers/${layers}_layer_aggre_${Aggre}_batch_${nb}.log
+							> ${save_path}/${layers}_layer_aggre_${Aggre}_batch_${nb}.log
 
 							done
 						done

@@ -24,14 +24,14 @@ re_partition_method=random
 # pMethodList=( random ) 
 
 # num_batch=( 8 9 10 16 17 18 19 32 64)
-num_batch=( 9)
+num_batch=(9)
 num_re_partition=(0)
 
 layersList=(2)
 fan_out_list=(10,25)
 
-hiddenList=(256 )
-AggreList=(lstm )
+hiddenList=(256)
+AggreList=(lstm mean pool)
 
 mkdir ./log1
 mkdir ./log1/micro_batch_train

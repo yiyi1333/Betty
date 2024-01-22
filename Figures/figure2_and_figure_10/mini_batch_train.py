@@ -140,7 +140,7 @@ def run(args, device, data):
     
 	
 	args.num_workers = 0 # when features on GPU, the number of workers should set 0 
-	batch_dataloader = dgl.dataloading.NodeDataLoader(
+	batch_dataloader = dgl.dataloading.DataLoader(
 		g,
 		train_nid,
 		sampler,
